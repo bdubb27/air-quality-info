@@ -1,0 +1,20 @@
+{
+  "name": "air-quality-info",
+  "version": "1.0.0",
+  "description": "A service that interfaces the AirNow API and files to return AQI information",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdubb27/air-quality-info.git"
+  },
+  "keywords": [],
+  "author": "Blake Watts <bdubb27@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bdubb27/air-quality-info/issues"
+  },
+  "homepage": "https://github.com/bdubb27/air-quality-info#readme"
+}
