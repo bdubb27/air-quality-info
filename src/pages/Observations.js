@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useState, useEffect, useMemo } from 'react'
+import Table from '../components/Table.js'
 
 // API handler
 const api = axios.create({
@@ -7,24 +8,35 @@ const api = axios.create({
   timeout: 5000
 })
 
-function Row(props) {
-  return (
-    <li>{props.aqsid}</li>
-  )
-}
-
 const Observations = () => {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState([])
   useEffect(() => {
-    api.get('observations')
-      .then((res) => setData(res.data))
+    (async () => {
+      let res = await api.get('observations')
+      setData(res.data)
+    })()
   }, [])
 
+  const columns = useMemo(
+    () => [
+      {
+        Header: "Site Name",
+        accessor: "SiteName"
+      },
+      {
+        Header: "Status",
+        accessor: "Status"
+      },
+      {
+        Header: "PM2.5 AQI",
+        accessor: "PM25_AQI"
+      }
+    ],
+    []
+  )
+
   return (
-    <>
-      <h1>Observations</h1>
-      <ul>{!data ? "Loading..." : data.map(({AQSID}) => <Row aqsid={AQSID} />)}</ul>
-    </>
+      <Table columns={columns} data={data} />
   )
 }
 
