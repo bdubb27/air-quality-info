@@ -1,9 +1,5 @@
 import { useTable } from 'react-table'
-import MuiTable from '@mui/material/Table'
-import TableHead from '@mui/material/TableHead'
-import TableBody from '@mui/material/TableBody'
-import TableRow from '@mui/material/TableRow'
-import TableCell from '@mui/material/TableCell'
+import { Table as MuiTable, TableHead, TableBody, TableRow, TableCell } from '@mui/material'
 
 export default function Table({ columns, data }) {
   const {
