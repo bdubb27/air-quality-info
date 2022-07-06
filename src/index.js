@@ -1,8 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Layout from './pages/Layout'
-import Home from './pages/Home'
-import NoPage from './pages/NoPage'
+import { Layout, Home, Observations, NoPage } from './pages/index.js'
+import './Layout.css'
 
 export default function App() {
   return (
@@ -10,6 +9,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="observations" element={<Observations />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
@@ -17,5 +17,5 @@ export default function App() {
   )
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById('app'))
 root.render(<App />)

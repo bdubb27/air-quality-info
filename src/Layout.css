@@ -1,0 +1,26 @@
+body {
+  font-family: sans-serif;
+}
+
+nav ul {
+  padding: 0;
+}
+nav li {
+  display: inline;
+  list-style: none;
+}
+
+nav li:not(:last-of-type) {
+  margin-right: .5rem;
+}
+
+a {
+  color: rgb(99, 126, 59);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: green;
+  text-decoration: underline;
+}
