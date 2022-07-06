@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect, useMemo } from 'react'
-import Table from '../components/Table.js'
+import MaterialPaginationReactTable from '../components/Table.js'
 
 // API handler
 const api = axios.create({
@@ -36,7 +36,7 @@ const Observations = () => {
   )
 
   return (
-      <Table columns={columns} data={data} />
+      <MaterialPaginationReactTable columns={columns} data={data} />
   )
 }
 
