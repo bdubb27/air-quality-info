@@ -1,26 +1,32 @@
 body {
-  font-family: sans-serif;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+nav {
+  border-bottom: 0.5px solid DimGray;
+  padding-left: 0.5em;
 }
 
 nav ul {
+  margin: 0;
   padding: 0;
 }
+
 nav li {
   display: inline;
   list-style: none;
 }
 
-nav li:not(:last-of-type) {
-  margin-right: .5rem;
-}
-
 a {
-  color: rgb(99, 126, 59);
+  display: inline-block;
+  padding: 1em 0.5em 0.5em;
+  color: #507f1e;
   font-weight: bold;
   text-decoration: none;
 }
 
 a:hover {
-  color: green;
+  color: #5a9021;
   text-decoration: underline;
 }
