@@ -6,11 +6,11 @@ const api = axios.create({
   timeout: 5000
 })
 
-const AddObservationFile = () => {
+export default function AddObservationFile() {
   const [data, setData] = useState([])
   useEffect(() => {
     (async () => {
-      let res = await api.get('observations/add')
+      let res = await api.post('observations/add')
       setData(res.data)
     })()
   }, [])
@@ -19,5 +19,3 @@ const AddObservationFile = () => {
     <p>{data.length === 0 ? "Loading..." : JSON.stringify(data)}</p>
   )
 }
-
-export default AddObservationFile

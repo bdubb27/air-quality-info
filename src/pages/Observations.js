@@ -41,14 +41,16 @@ const AQIColor = ({ value }) => {
   )
 }
 
-const Observations = () => {
+export default function Observations({ path }) {
   const [data, setData] = useState([])
   useEffect(() => {
     (async () => {
-      let res = await api.get('observations')
+      let res = await api.get(('observations'), {
+        params: { path: path }
+      })
       setData(res.data)
     })()
-  }, [])
+  }, [path])
 
   const columns = useMemo(
     () => [
@@ -73,5 +75,3 @@ const Observations = () => {
       <MaterialPaginationReactTable columns={columns} data={data} />
   )
 }
-
-export default Observations
