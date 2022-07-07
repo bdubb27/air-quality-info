@@ -1,0 +1,38 @@
+.aqi-badge {
+  display: inline-block;
+  width: 3.3em;
+  height: 1.39em;
+  border: 0.5px solid DimGray;
+  border-radius: 1em;
+  text-align: center;
+}
+
+.green {
+  background: LimeGreen;
+  color: White;
+}
+
+.yellow {
+  background: Yellow;
+  color: Black;
+}
+
+.orange {
+  background: Orange;
+  color: White;
+}
+
+.red {
+  background: Red;
+  color: White;
+}
+
+.purple {
+  background: Purple;
+  color: White;
+}
+
+.maroon {
+  background: Maroon;
+  color: White;
+}

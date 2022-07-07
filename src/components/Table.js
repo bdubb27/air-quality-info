@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTable } from 'react-table'
 import { Box, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TablePagination, TableRow, IconButton } from '@mui/material'
 import { FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage } from '@mui/icons-material'
+import '../Table.css'
 
 function TablePaginationActions(props) {
   const { count, page, rowsPerPage, onPageChange } = props
@@ -78,14 +79,21 @@ export default function MaterialPaginationReactTable({ columns, data }) {
     headerGroups,
     rows,
     prepareRow
-  } = useTable({
-    columns,
-    data
-  })
+  } = useTable(
+    {
+      columns,
+      data
+    }
+  )
 
   return (
     <TableContainer>
       <Table stickyHeader sx={{ maxWidth: 650 }} size="small" {...getTableProps()}>
+        <colgroup>
+          <col style={{width: '60%'}} />
+          <col style={{width: '20%'}} />
+          <col style={{width: '20%'}} />
+        </colgroup>
         <TableHead>
           {headerGroups.map(headerGroup => (
             <TableRow {...headerGroup.getHeaderGroupProps()}>

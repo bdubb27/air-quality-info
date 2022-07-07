@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Layout, Home, Observations, NoPage } from './pages/index.js'
-import './Layout.css'
 
 export default function App() {
   return (

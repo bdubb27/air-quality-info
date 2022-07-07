@@ -8,6 +8,39 @@ const api = axios.create({
   timeout: 5000
 })
 
+const AQIColor = ({ value }) => {
+  let className = 'aqi-badge '
+  switch (true) {
+    default:
+    case (value == null):
+      return
+    case (value <= 50):
+      className += 'green'
+      break
+    case (value <= 100):
+      className += 'yellow'
+      break
+    case (value <= 150):
+      className += 'orange'
+      break
+    case (value <= 200):
+      className += 'red'
+      break
+    case (value <= 300):
+      className += 'purple'
+      break
+    case (value > 300):
+      className += 'maroon'
+      break
+  }
+
+  return (
+    <span className={className}>
+      {value}
+    </span>
+  )
+}
+
 const Observations = () => {
   const [data, setData] = useState([])
   useEffect(() => {
@@ -20,16 +53,17 @@ const Observations = () => {
   const columns = useMemo(
     () => [
       {
-        Header: "Site Name",
-        accessor: "SiteName"
+        accessor: "SiteName",
+        Header: "Site Name"
       },
       {
-        Header: "Status",
-        accessor: "Status"
+        accessor: "Status",
+        Header: "Status"
       },
       {
+        accessor: "PM25_AQI",
         Header: "PM2.5 AQI",
-        accessor: "PM25_AQI"
+        Cell: ({ value }) => <AQIColor value={value} />
       }
     ],
     []
