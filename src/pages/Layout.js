@@ -13,6 +13,9 @@ export default function Layout() {
             <Link to="/observations">Observations</Link>
           </li>
           <li>
+            <Link to="/observations/aac">AAC</Link>
+          </li>
+          <li>
             <Link to="/observations/get">Get Latest File</Link>
           </li>
           <li>
