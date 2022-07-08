@@ -88,11 +88,12 @@ export default function MaterialPaginationReactTable({ columns, data }) {
 
   return (
     <TableContainer>
-      <Table stickyHeader sx={{ maxWidth: 650 }} size="small" {...getTableProps()}>
+      <Table sx={{ maxWidth: "50em" }} size="small" {...getTableProps()}>
         <colgroup>
-          <col style={{width: '60%'}} />
-          <col style={{width: '20%'}} />
-          <col style={{width: '20%'}} />
+          <col style={{ width: "14em" }} />
+          <col style={{ width: "23em" }} />
+          <col style={{ width: "6em" }} />
+          <col style={{ width: "7em" }} />
         </colgroup>
         <TableHead>
           {headerGroups.map(headerGroup => (

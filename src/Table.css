@@ -1,7 +1,7 @@
 .aqi-badge {
-  display: inline-block;
   width: 3.3em;
-  height: 1.39em;
+  height: 19px;
+  margin: 0 auto;
   border: 0.5px solid DimGray;
   border-radius: 1em;
   text-align: center;

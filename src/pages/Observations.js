@@ -1,12 +1,23 @@
 import axios from 'axios'
 import { useState, useEffect, useMemo } from 'react'
+import * as dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import advancedFormat from 'dayjs/plugin/advancedFormat'
+import timezone from 'dayjs/plugin/timezone'
 import MaterialPaginationReactTable from '../components/Table.js'
+dayjs.extend(utc)
+dayjs.extend(advancedFormat)
+dayjs.extend(timezone)
 
 // API handler
 const api = axios.create({
   baseURL: 'http://localhost:3001/api',
   timeout: 5000
 })
+
+const DateTime = ({ value }) => {
+  return dayjs(value).utc(true).format('M/D/YYYY - h:mm A z')
+}
 
 const AQIColor = ({ value }) => {
   let className = 'aqi-badge '
@@ -35,9 +46,9 @@ const AQIColor = ({ value }) => {
   }
 
   return (
-    <span className={className}>
+    <div className={className}>
       {value}
-    </span>
+    </div>
   )
 }
 
@@ -55,16 +66,21 @@ export default function Observations({ path }) {
   const columns = useMemo(
     () => [
       {
+        accessor: "DateTime",
+        Header: "Date & Time",
+        Cell: ({ value }) => <DateTime value={value} />
+      },{
         accessor: "SiteName",
         Header: "Site Name"
       },
       {
         accessor: "Status",
-        Header: "Status"
+        Header: () => (<div style={{ textAlign: "center" }}>Status</div>),
+        Cell: ({ value }) => <div style={{ textAlign: "center" }}>{value}</div>
       },
       {
         accessor: "PM25_AQI",
-        Header: "PM2.5 AQI",
+        Header: () => (<div style={{ textAlign: "center" }}>PM2.5 AQI</div>),
         Cell: ({ value }) => <AQIColor value={value} />
       }
     ],
