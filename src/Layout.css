@@ -30,3 +30,7 @@ a:hover {
   color: #5a9021;
   text-decoration: underline;
 }
+
+#app h1 {
+  margin-left: 1em;
+}

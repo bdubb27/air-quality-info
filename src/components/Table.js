@@ -88,11 +88,14 @@ export default function MaterialPaginationReactTable({ columns, data }) {
 
   return (
     <TableContainer>
-      <Table sx={{ maxWidth: "50em" }} size="small" {...getTableProps()}>
+      <Table sx={{ maxWidth: "75em" }} size="small" {...getTableProps()}>
         <colgroup>
           <col style={{ width: "14em" }} />
-          <col style={{ width: "23em" }} />
           <col style={{ width: "6em" }} />
+          <col style={{ width: "9em" }} />
+          <col style={{ width: "21em" }} />
+          <col style={{ width: "13em" }} />
+          <col style={{ width: "5em" }} />
           <col style={{ width: "7em" }} />
         </colgroup>
         <TableHead>
@@ -129,7 +132,7 @@ export default function MaterialPaginationReactTable({ columns, data }) {
           <TableRow>
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-              colSpan={3}
+              colSpan={999}
               count={data.length}
               rowsPerPage={rowsPerPage}
               page={page}

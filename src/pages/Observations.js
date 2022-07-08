@@ -69,14 +69,27 @@ export default function Observations({ path }) {
         accessor: "DateTime",
         Header: "Date & Time",
         Cell: ({ value }) => <DateTime value={value} />
-      },{
-        accessor: "SiteName",
-        Header: "Site Name"
       },
       {
         accessor: "Status",
         Header: () => (<div style={{ textAlign: "center" }}>Status</div>),
         Cell: ({ value }) => <div style={{ textAlign: "center" }}>{value}</div>
+      },
+      {
+        accessor: "AQSID",
+        Header: "AQSID"
+      },
+      {
+        accessor: "SiteName",
+        Header: "Site Name"
+      },
+      {
+        accessor: "City",
+        Header: "City"
+      },
+      {
+        accessor: "State",
+        Header: "State"
       },
       {
         accessor: "PM25_AQI",
