@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect, useMemo } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import * as dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
@@ -53,11 +54,18 @@ const AQIColor = ({ value }) => {
 }
 
 export default function Observations({ path }) {
+  const [searchParams] = useSearchParams()
+  const params = Object.fromEntries([...searchParams])
+  console.log(params); // DEBUG:
+
   const [data, setData] = useState([])
   useEffect(() => {
     (async () => {
       let res = await api.get(('observations'), {
-        params: { path: path }
+        params: {
+          path: path,
+          params: params
+        }
       })
       setData(res.data)
     })()
