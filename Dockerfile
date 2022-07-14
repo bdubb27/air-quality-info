@@ -1,7 +1,9 @@
-FROM node:18-alpine AS build
+FROM node:18-alpine AS base
 WORKDIR /
 COPY package.json ./
 RUN yarn install
+
+FROM base AS build
 COPY public ./public
 COPY src ./src
 RUN yarn run build
