@@ -61,7 +61,7 @@ export default function Observations({ path }) {
       })
       setData(res.data)
     })()
-  }, [path])
+  }, [])
 
   const columns = useMemo(
     () => [
