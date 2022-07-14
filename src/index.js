@@ -8,8 +8,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="observations" element={<Observations />} />
-          <Route path="observations/aac" element={<Observations path="aac" />} />
+          <Route path="observations" element={<Observations />}>
+            <Route path=":path" element={<Observations />} />
+          </Route>
           <Route path="observations/get" element={<GetObservationFile />} />
           <Route path="observations/add" element={<AddObservationFile />} />
           <Route path="*" element={<NoPage />} />

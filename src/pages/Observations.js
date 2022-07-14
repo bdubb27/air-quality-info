@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect, useMemo } from 'react'
+import { useParams, useSearchParams } from 'react-router-dom'
 import * as dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
@@ -12,7 +13,7 @@ dayjs.extend(timezone)
 // API handler
 const api = axios.create({
   baseURL: '/api',
-  timeout: 5000
+  timeout: 300
 })
 
 const DateTime = ({ value }) => {
@@ -52,16 +53,36 @@ const AQIColor = ({ value }) => {
   )
 }
 
-export default function Observations({ path }) {
+export default function Observations() {
+  const { path } = useParams()
+  const [searchParams] = useSearchParams()
   const [data, setData] = useState([])
+  const [axiosError, setAxiosError] = useState([])
+
   useEffect(() => {
     (async () => {
-      let res = await api.get(('observations'), {
-        params: { path: path }
-      })
-      setData(res.data)
+      setAxiosError([])
+      setData([])
+
+      const params = {
+        path: path,
+        params: Object.fromEntries([...searchParams])
+      }
+
+      try {
+        let res = await api.get(('observations'), {
+          params: params
+        })
+
+        res.status === 200 && res.data.length === 0
+        ? setAxiosError("No results...")
+        : setData(res.data)
+
+      } catch (error) {
+        setAxiosError(error)
+      }
     })()
-  }, [])
+  }, [path, searchParams])
 
   const columns = useMemo(
     () => [
@@ -101,6 +122,10 @@ export default function Observations({ path }) {
   )
 
   return (
-      <MaterialPaginationReactTable columns={columns} data={data} />
+    axiosError.length === 0
+    ? data.length === 0
+      ? <p>Loading...</p>
+      : <MaterialPaginationReactTable columns={columns} data={data} />
+    : <p>{axiosError.toString()}</p>
   )
 }
