@@ -31,6 +31,6 @@ a:hover {
   text-decoration: underline;
 }
 
-#app h1 {
+#app h1, #app p {
   margin-left: 1em;
 }

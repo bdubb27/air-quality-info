@@ -3,19 +3,36 @@ import { useState, useEffect } from 'react'
 
 const api = axios.create({
   baseURL: '/api',
-  timeout: 5000
+  timeout: 300
 })
 
 export default function GetObservationFile() {
   const [data, setData] = useState([])
+  const [axiosError, setAxiosError] = useState([])
+
   useEffect(() => {
     (async () => {
-      let res = await api.get('observations/get')
-      setData(res.data)
+      setAxiosError([])
+      setData([])
+
+      try {
+        let res = await api.get('observations/get')
+
+        res.status === 200 && res.data.length === 0
+        ? setAxiosError("No results...")
+        : setData(res.data)
+
+      } catch (error) {
+        setAxiosError(error)
+      }
     })()
   }, [])
 
   return (
-    <p>{data.length === 0 ? "Loading..." : JSON.stringify(data)}</p>
+    axiosError.length === 0
+    ? data.length === 0
+      ? <p>Loading...</p>
+      : <p>{data.toString()}</p>
+    : <p>{axiosError.toString()}</p>
   )
 }
