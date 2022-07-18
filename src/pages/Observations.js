@@ -13,7 +13,7 @@ dayjs.extend(timezone)
 // API handler
 const api = axios.create({
   baseURL: '/api',
-  timeout: 300
+  timeout: 400
 })
 
 const DateTime = ({ value }) => {

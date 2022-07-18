@@ -24,6 +24,9 @@ export default function Layout() {
           <li>
             <Link to="/observations/add">Add Latest to DB</Link>
           </li>
+          <li>
+            <Link to="/aqsid/cities">Update AQSID City/State</Link>
+          </li>
         </ul>
       </nav>
 

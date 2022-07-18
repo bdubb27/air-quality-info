@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Layout, Home, Observations, GetObservationFile, AddObservationFile, NoPage } from './pages/index.js'
+import { Layout, Home, Observations, GetObservationFile, AddObservationFile, UpdateAQSIDCities, NoPage } from './pages/index.js'
 
 export default function App() {
   return (
@@ -8,11 +8,16 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="observations" element={<Observations />}>
+          <Route path="observations">
+            <Route index element={<Observations />} />
             <Route path=":path" element={<Observations />} />
+            <Route path="get" element={<GetObservationFile />} />
+            <Route path="add" element={<AddObservationFile />} />
           </Route>
-          <Route path="observations/get" element={<GetObservationFile />} />
-          <Route path="observations/add" element={<AddObservationFile />} />
+          <Route path="aqsid">
+            <Route index element={<NoPage />} />
+            <Route path="cities" element={<UpdateAQSIDCities />} />
+          </Route>
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

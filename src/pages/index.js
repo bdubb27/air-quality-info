@@ -3,6 +3,14 @@ import Home from './Home.js'
 import Observations from './Observations.js'
 import GetObservationFile from './GetObservationFile.js'
 import AddObservationFile from './AddObservationFile.js'
+import UpdateAQSIDCities from './UpdateAQSIDCities.js'
 import NoPage from './NoPage.js'
 
-export { Layout, Home, Observations, GetObservationFile, AddObservationFile, NoPage }
+export {
+  Layout,
+  Home,
+  Observations,
+  GetObservationFile,
+  AddObservationFile,
+  UpdateAQSIDCities,
+  NoPage }
